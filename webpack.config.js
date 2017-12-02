@@ -1,5 +1,4 @@
 const SriPlugin = require('webpack-subresource-integrity');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -11,11 +10,9 @@ module.exports = {
         filename: '[name].[chunkhash].js'
     },
     plugins: [
+        new webpack.NamedChunksPlugin(),
         new SriPlugin({
             hashFuncNames: ['sha256', 'sha384'],
-        }),
-        new HtmlWebpackPlugin({
-            template: './index.html'
         })
     ],
 };
